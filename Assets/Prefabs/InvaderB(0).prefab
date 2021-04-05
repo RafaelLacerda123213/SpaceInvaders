@@ -143,6 +143,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fire: {fileID: 261698275162241773, guid: 9614cc3d9102b75458686ea6c8091151, type: 3}
   indLives: 0
-  minFireRateTime: 7
-  maxFireRateTime: 3
-  baseFireWaitTime: 6
+  minFireRateTime: 3
+  maxFireRateTime: 10

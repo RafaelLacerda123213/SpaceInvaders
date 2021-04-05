@@ -25,7 +25,7 @@ public class Invader : MonoBehaviour
 
     public float maxFireRateTime = 3.0f;
 
-    public float baseFireWaitTime = 3.0f;
+     float baseFireWaitTime = 3.0f;
 
 
 
