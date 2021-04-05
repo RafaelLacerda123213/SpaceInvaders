@@ -18,61 +18,117 @@ public class SpawnInvanders : MonoBehaviour
     int nInvasores = 7;
 
     [SerializeField]
+    public GameObject[] invasores;
+
+    [SerializeField]
+    GameObject[] invasoresInd;
+
+    [SerializeField]
     float xMin = -3f;
 
     [SerializeField]
     float yMin = -0.5f;
 
+    [SerializeField]
+    float xInc = 1f;
+
+    [SerializeField]
+    float yInc = 0.5f;
+
+    [SerializeField]
+    float probabilidadeDeInd = 0.15f;
+
+    float minX, maxX;
+
+    float velocidade = 0.005f;
+
+    float tempo = 0f;
+
+    bool mov = true;
+
+    [SerializeField]
+    float movLat = -3f;
 
 
 
-    void Awake()
+
+
+
+
+    public void Awake()
     {
-        float x = xMin;
         float y = yMin;
 
-        for(int i = 1; i <= 5; i++)
+        for (int line = 0; line < invasores.Length; line++)
         {
-          for(int j = 1; j <= nInvasores; j++)
-          {
-                if (j == 1)
-                    x = xMin;
+           
+            float x = xMin;
+            for( int i = 1; i <= nInvasores; i++)
+            {
+                if(Random.value <= probabilidadeDeInd)
+                {
+                    GameObject newInvader = Instantiate(invasoresInd[line], transform);
+                    newInvader.transform.position = new Vector3(x, y, 0f);
+                } else
+                {
+                    GameObject newInvader = Instantiate(invasores[line], transform);
+                    newInvader.transform.position = new Vector3(x, y, 0f);
+                    
+                }
+                x += xInc;
 
-                if (i == 1)
-                    Invasores(invasorA, 0);
-
-                if (i == 2)
-                    Invasores(invasorA, 0.5f);
-
-                if (i == 3)
-                    Invasores(invasorB, 1f);
-
-                if (i == 4)
-                    Invasores(invasorB, 1.5f);
-
-                if (i == 5)
-                    Invasores(invasorC, 2f);
-
-
-          }
-
-
-        }
-
-
-
-        void Invasores(GameObject Invasor, float p)
-        {
-            y = yMin + p;
-
-            GameObject newInvader = Instantiate(Invasor, transform);
-            newInvader.transform.position = new Vector3(x, y, 0f);
-            x += 1f;
+            }
+            y += yInc;
         }
 
     }
 
+    private void Start()
+    {
+        minX = Camera.main.ViewportToWorldPoint(Vector2.zero).x + movLat;
+        maxX = Camera.main.ViewportToWorldPoint(Vector2.one).x - movLat;
 
+    }
+
+
+
+    void Update()
+    {
+        {
+
+            tempo += Time.deltaTime;
+
+            Vector3 position = transform.position;
+            position.x = Mathf.Clamp(position.x, minX, maxX);
+            transform.position = position;
+
+            if (mov == true)
+            {
+                transform.position += velocidade * Vector3.right;
+                transform.position += velocidade * Vector3.down;
+
+                if (position.x == maxX)
+                {
+                    mov = false;
+                }
+
+            }
+
+            if (mov == false)
+            {
+                transform.position -= velocidade * Vector3.right;
+                transform.position -= velocidade * Vector3.down;
+
+                if (position.x == minX)
+                {
+                    mov = true;
+                }
+            }
+
+
+        }
+
+    }
 
 
 

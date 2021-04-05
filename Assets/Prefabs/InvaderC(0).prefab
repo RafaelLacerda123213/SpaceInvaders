@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 8774710297468406703}
   - component: {fileID: 8774710297468406700}
   - component: {fileID: 8774710297468406701}
-  m_Layer: 0
+  - component: {fileID: 1896150778960739491}
+  - component: {fileID: -2069414791778330717}
+  m_Layer: 8
   m_Name: InvaderC(0)
-  m_TagString: Untagged
+  m_TagString: destrutivel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,3 +103,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1896150778960739491
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774710297468406706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.4, y: 0.26666668}
+    newSize: {x: 0.4, y: 0.26666668}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.26666668}
+  m_EdgeRadius: 0
+--- !u!114 &-2069414791778330717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774710297468406706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4638686f4b66d2458e6e084b9caed8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 261698275162241773, guid: 9614cc3d9102b75458686ea6c8091151, type: 3}
+  indLives: 0
+  minFireRateTime: 10
+  maxFireRateTime: 4
+  baseFireWaitTime: 7

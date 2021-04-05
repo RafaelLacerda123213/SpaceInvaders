@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: -9206443668446817905}
   - component: {fileID: -2704434098589117110}
   m_Layer: 8
-  m_Name: InvaderB(0)
-  m_TagString: destrutivel
+  m_Name: NONO3
+  m_TagString: industrutivel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ca246ae423620849b9013fa3ad3d3f2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: {fileID: 261698275162241773, guid: 9614cc3d9102b75458686ea6c8091151, type: 3}
-  indLives: 0
-  minFireRateTime: 7
-  maxFireRateTime: 3
-  baseFireWaitTime: 6
+  indLives: 10
+  minFireRateTime: 2
+  maxFireRateTime: 4
+  baseFireWaitTime: 4
