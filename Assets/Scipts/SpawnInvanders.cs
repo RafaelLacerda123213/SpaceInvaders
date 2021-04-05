@@ -46,9 +46,7 @@ public class SpawnInvanders : MonoBehaviour
 
     bool mov = true;
 
-    [SerializeField]
-    float movLat = -3f;
-
+    bool vmov = false;
 
 
 
@@ -83,10 +81,10 @@ public class SpawnInvanders : MonoBehaviour
 
     }
 
-    private void Start()
+    void Start()
     {
-        minX = Camera.main.ViewportToWorldPoint(Vector2.zero).x + movLat;
-        maxX = Camera.main.ViewportToWorldPoint(Vector2.one).x - movLat;
+        minX = Camera.main.ViewportToWorldPoint(Vector2.zero).x + 3.3f;
+        maxX = Camera.main.ViewportToWorldPoint(Vector2.one).x - 3.3f;
 
     }
 
@@ -94,39 +92,42 @@ public class SpawnInvanders : MonoBehaviour
 
     void Update()
     {
+
+        Vector3 position = transform.position;
+        position.x = Mathf.Clamp(position.x, minX, maxX);
+        transform.position = position;
+
+        if(mov == true)
         {
+            transform.position += velocidade * Vector3.right;
 
-            tempo += Time.deltaTime;
-
-            Vector3 position = transform.position;
-            position.x = Mathf.Clamp(position.x, minX, maxX);
-            transform.position = position;
-
-            if (mov == true)
+            if(position.x == maxX && vmov == false)
             {
-                transform.position += velocidade * Vector3.right;
-                transform.position += velocidade * Vector3.down;
-
-                if (position.x == maxX)
-                {
-                    mov = false;
-                }
-
+                if (position.y <= -2)
+                    vmov = true;
+                else
+                    transform.position += 0.2f * Vector3.down; 
             }
-
-            if (mov == false)
-            {
-                transform.position -= velocidade * Vector3.right;
-                transform.position -= velocidade * Vector3.down;
-
-                if (position.x == minX)
-                {
-                    mov = true;
-                }
-            }
-
-
+            if (position.x == maxX)
+                mov = false;
         }
+        else
+        {
+            transform.position -= velocidade * Vector3.right;
+
+            if(position.x == minX && vmov == false)
+            {
+                if (position.y <= -2)
+                    vmov = true;
+                else
+                    transform.position += 0.2f * Vector3.down;
+            }
+            if (position.x == minX)
+                mov = true;
+        }
+
+
+
 
     }
 
